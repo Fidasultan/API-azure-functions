@@ -1,6 +1,5 @@
 databaseName=tailwind
 containerName=products
-groupName=tailwind_rg
 
 # Get the connection string
 echo "Getting connection string. This might take up to two minutes as we prepare the database..."
@@ -8,12 +7,8 @@ echo "Getting connection string. This might take up to two minutes as we prepare
 # Get the account name, which is randomized
 accountName=$(az cosmosdb list --query "[0].name" -o tsv)
 
-
 # Get the group name, which is preassigned
-
-
-# Get the group name, which is preassigned
-# groupName=$(az group list --query "[4].name" -o tsv)
+groupName=$(az group list --query "[4].name" -o tsv)
 
 # Create the database
 az cosmosdb sql database create -a $accountName -g $groupName -n $databaseName -o none
@@ -31,5 +26,4 @@ node ./POPULATE_DATABASE.js --endpoint $endpoint --key $key --databaseName $data
 
 echo "This is your connection string. Copy it to your clipboard..."
 az cosmosdb keys list -n $accountName -g $groupName --type connection-strings --query "connectionStrings[0].connectionString" -o tsv
-
 
