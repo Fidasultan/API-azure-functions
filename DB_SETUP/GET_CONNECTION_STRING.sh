@@ -1,5 +1,8 @@
 databaseName=tailwind
 containerName=products
+groupName="rg-fida"
+databaseName="tailwind"
+
 
 # Get the connection string
 echo "Getting connection string. This might take up to two minutes as we prepare the database..."
